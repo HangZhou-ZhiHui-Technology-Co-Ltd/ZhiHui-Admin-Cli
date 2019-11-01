@@ -1,0 +1,31 @@
+{
+  "name": "zh-admin-docs",
+  "version": "1.0.0",
+  "description": "杭州质慧信息技术有限公司 - 中前台脚手架文档",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TravisChenn/Zh-Admin-Docs.git"
+  },
+  "author": "TravisChenn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TravisChenn/Zh-Admin-Docs/issues"
+  },
+  "homepage": "https://github.com/TravisChenn/Zh-Admin-Docs#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-import": "^1.12.2",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "vuepress": "^1.2.0"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.4.4",
+    "moment": "^2.24.0"
+  }
+}
