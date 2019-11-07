@@ -18,6 +18,14 @@
   },
   "homepage": "https://github.com/TravisChenn/Zh-Admin-Docs#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-import": "^1.12.2",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "vuepress": "^1.2.0"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.4.4",
+    "moment": "^2.24.0"
   }
 }
