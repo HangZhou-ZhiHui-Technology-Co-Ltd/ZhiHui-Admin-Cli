@@ -1,7 +1,9 @@
 import TimePicker from '../components/Form/TimePicker'
+import ActionMenu from '../components/Action/ActionMenu'
 
 const components = {
-    TimePicker
+    TimePicker,
+    ActionMenu
 }
 
 const install = function(Vue) {

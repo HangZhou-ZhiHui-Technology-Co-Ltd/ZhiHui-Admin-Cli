@@ -7,7 +7,7 @@ module.exports = {
   },
   themeConfig: {
     nav: [
-      { text: '组件', link: '/views/components/timepicker.md' },
+      { text: '组件', link: '/views/components/actionmenu.md' },
       { text: 'Github', link: 'https://github.com/TravisChenn/Zh-Admin-Docs' }
     ]
   },
