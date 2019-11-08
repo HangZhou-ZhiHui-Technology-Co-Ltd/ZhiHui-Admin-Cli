@@ -18,11 +18,7 @@ footer: MIT Licensed | Copyright © 2019-present Travis Chenn
 
 ```bash
 # clone the project
-<<<<<<< HEAD
-git clone https://github.com/TravisChenn/Zh-Admin.git
-=======
 git clone https://github.com/HangZhou-ZhiHui-Technology-Co-Ltd/ZhiHui-Admin-Cli.git
->>>>>>> origin/master
 
 # install dependency
 npm install
