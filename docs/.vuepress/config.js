@@ -1,5 +1,4 @@
 const path = require('path')
-
 module.exports = {
   base: '/Zh-Admin-Docs/',
   markdown: {
