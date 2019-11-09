@@ -1,13 +1,11 @@
-import TimePicker from '../components/Form/TimePicker'
-import ActionMenu from '../components/Action/ActionMenu'
+import ZhAdvice from './advice'
 
 const components = {
-  TimePicker,
-  ActionMenu
+  ZhAdvice
 }
 
-const install = function (Vue) {
-  if (install.installed) {
+const cmpt_inc = function (Vue) {
+  if (cmpt_inc.installed) {
     return
   }
   Object.keys(components).forEach(key => {
@@ -15,10 +13,6 @@ const install = function (Vue) {
   })
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
-}
-
 export default {
-  install
+  cmpt_inc
 }
