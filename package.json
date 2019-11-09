@@ -34,13 +34,13 @@
     "vuepress": "^1.2.0"
   },
   "config": {
-    "husky": {
-      "hooks": {
-        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-      }  
-    },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }  
   }
 }
