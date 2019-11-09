@@ -1,4 +1,5 @@
 <script>
+import { isString, cloneDeep } from 'lodash'
 import SELECT from 'ant-design-vue/es/select'
 export default {
   name: 'zh-advice',
@@ -26,31 +27,61 @@ export default {
     }
   },
   methods: {
+    /**
+     * 转换
+     */
+    _format (value) {
+      let element = cloneDeep(value)
+      if (isString(element)) {
+        element = { label: element, value: element }
+      }
+      return element
+    },
    /**
-     * 渲染项 - 选择器
+     * 渲染 - 选择器
      */
     _render_select () {
       return (
-        <a-select mode={mode} showSearch disabled={this.disabled} dropdownMatchSelectWidth={false} showArrow={this._show_arrow} filterOption={false} v-model={this.current} on-search={this._search} on-change={this._change} defaultActiveFirstOption={false} placeholder={this.placeholder}>
+        <a-select>
           { this._render_options() }
         </a-select>
       )
     },
     /**
-     * 渲染项 - 建议点
+     * 渲染 - 建议项
      */
     _render_options () {
       if (this.loading) {
         return <a-spin slot="notFoundContent" size="small" />
       } else {
-        return this.data.map(item => {
-          const { label, value } = this._format(item)
-          return (
-            <a-select-option value={value} on-click={() => { this.$emit('select', { label, value, original: item }) }}>{label}</a-select-option>
-          )
-        })
+        return this.data.map(item => <a-select-option { ...this._vnode_option(item) } />)
+      }
+    },
+    /**
+     * 节点 - 建议项
+     * ---
+     * @param {Object | String} value 数据
+     * ---
+     */
+    _vnode_option (value) {
+      const { label, value } = this._format(item)
+      return {
+        props: {
+          value
+        },
+        domProps: {
+          innerHTML: label
+        },
+        on: {
+          click: () => {
+            this.$emit('select', { label, value, origin: item })
+          }
+        }
       }
     }
+  },
+  computed: {
+
   },
   watch: {
     value: {
