@@ -1,4 +1,4 @@
-# HangZhou-ZhiHui-Technology-Co-Ltd - Font End Admin - Docs
+# ZhiHui Admin - Docs
 
 ## Content
 [Git Guidenines](#git-guidenines)
