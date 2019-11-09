@@ -9,22 +9,5 @@ module.exports = {
       { text: '组件', link: '/views/components/actionmenu.md' },
       { text: 'Github', link: 'https://github.com/TravisChenn/Zh-Admin-Docs' }
     ]
-  },
-  configureWebpack: (config, isServer) => {
-    if (!isServer) {
-      return {
-        module: {
-          rules: [
-            {
-              test: /\.less$/,
-              loader: 'less-loader',
-              options: { 
-                javascriptEnabled: true 
-              } 
-            }
-          ]
-        }
-      }
-    }
   }
 }
