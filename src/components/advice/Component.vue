@@ -18,7 +18,11 @@ export default {
       /**
        * 绑定数据
        */
-      data: null
+      data: null,
+      /**
+       * 加载状态
+       */
+      loading: false
     }
   },
   methods: {
@@ -31,6 +35,21 @@ export default {
           { this._render_options() }
         </a-select>
       )
+    },
+    /**
+     * 渲染项 - 建议点
+     */
+    _render_options () {
+      if (this.loading) {
+        return <a-spin slot="notFoundContent" size="small" />
+      } else {
+        return this.data.map(item => {
+          const { label, value } = this._format(item)
+          return (
+            <a-select-option value={value} on-click={() => { this.$emit('select', { label, value, original: item }) }}>{label}</a-select-option>
+          )
+        })
+      }
     }
   },
   watch: {

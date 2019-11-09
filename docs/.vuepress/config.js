@@ -1,8 +1,30 @@
+const path = require('path')
 module.exports = {
-  base: '/ZhiHui-Admin-Cli/',
+  base: '/Zh-Admin-Docs/',
+  markdown: {
+    lineNumbers: true
+  },
   themeConfig: {
     nav: [
-      { text: 'Github', link: 'https://github.com/HangZhou-ZhiHui-Technology-Co-Ltd/ZhiHui-Admin-Cli' }
+      { text: '组件', link: '/views/components/actionmenu.md' },
+      { text: 'Github', link: 'https://github.com/TravisChenn/Zh-Admin-Docs' }
     ]
+  },
+  configureWebpack: (config, isServer) => {
+    if (!isServer) {
+      return {
+        module: {
+          rules: [
+            {
+              test: /\.less$/,
+              loader: 'less-loader',
+              options: { 
+                javascriptEnabled: true 
+              } 
+            }
+          ]
+        }
+      }
+    }
   }
 }

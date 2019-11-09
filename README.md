@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# Zh-Admin-Docs
+杭州质慧信息技术有限公司 - 中前台脚手架 - 文档
+=======
 # zhihui-admin-cli
 
 ## Project setup
@@ -22,3 +26,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+>>>>>>> origin/master
