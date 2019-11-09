@@ -36,6 +36,9 @@
     "moment": "^2.24.0"
   },
   "config": {
+    "ghooks": {
+      "commit-msg": "./validate-commit-comment.js"
+    },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
