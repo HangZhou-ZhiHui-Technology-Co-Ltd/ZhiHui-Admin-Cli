@@ -1,10 +1,10 @@
 # ZhiHui Admin - Docs
 
-## Content
-[Git Guidenines](#git-guidenines)
+## 目录
+[Git](#git)
 * * *
 
-## Git Guidenines
-* Guidelines - [Angular Commit ](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
-* Genorator - [Commit Comment ](https://github.com/commitizen/cz-cli)
-* Checker - [Commit Comment ](https://github.com/conventional-changelog/commitlint)
+## Git
+* 提交规范 - [Angular 代码贡献指南](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
+* 信息生成 - [commitizen](https://github.com/commitizen/cz-cli)
+* 信息检查 - [commitlint](https://github.com/conventional-changelog/commitlint)
