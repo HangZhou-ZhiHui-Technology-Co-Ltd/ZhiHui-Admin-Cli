@@ -1,4 +1,4 @@
-# ZhiHui Admin - 文档
+# ZhiHui Admin
 
 ## 目录
 [版本管理](#版本管理)
