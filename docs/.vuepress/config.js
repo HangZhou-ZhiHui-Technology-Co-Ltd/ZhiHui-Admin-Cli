@@ -8,6 +8,21 @@ module.exports = {
    */
   base: '/ZhiHui-Admin-Cli/',
   /**
+   * Markdown 拓展
+   * ---
+   * @doc https://vuepress.vuejs.org/zh/guide/markdown.html
+   * ---
+   */
+  markdown: {
+    /**
+     * 行号
+     * ---
+     * @doc https://vuepress.vuejs.org/zh/guide/markdown.html#%E8%A1%8C%E5%8F%B7
+     * ---
+     */
+    lineNumbers: true
+  },
+  /**
    * 默认主体配置
    * ---
    * @doc https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE
@@ -30,11 +45,11 @@ module.exports = {
     nav: [
       {
         text: '组件',
-        link: '/views/components/' 
+        link: '/views/components/'
       },
-      { 
+      {
         text: 'Github',
-        link: 'https://github.com/HangZhou-ZhiHui-Technology-Co-Ltd/ZhiHui-Admin-Cli' 
+        link: 'https://github.com/HangZhou-ZhiHui-Technology-Co-Ltd/ZhiHui-Admin-Cli'
       }
     ],
     /**

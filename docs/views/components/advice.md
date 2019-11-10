@@ -2,25 +2,27 @@
 <template>
 <code-box>
 <template slot="demo">
+
 </template>
 <template slot="title">
 
-## 基本用法
+## 离线建议
 
 </template>
 <template slot="desc">
 
-基本的用法，将数个功能转换为按钮块
+当建议项已知时，可以通过 `advice` 设置离线建议直接进行展示
 
 </template>
 <template slot="code">
 
-``` html
+```html
 <template slot="demo">
-    <action-menu :config="config" />
+  <action-menu :config="config" />
 </template>
 ```
-``` js
+
+```js
 export default {
   data () {
     config: [
@@ -33,6 +35,7 @@ export default {
   }
 }
 ```
+
 </template>
 </code-box>
 </template>
