@@ -48,7 +48,7 @@ export default {
       )
     },
     /**
-     * 渲染 - 建议项
+     * 渲染 - 建议
      */
     _render_options () {
       if (this.loading) {
@@ -58,13 +58,13 @@ export default {
       }
     },
     /**
-     * 节点 - 建议项
+     * 节点 - 建议
      * ---
-     * @param {Object | String} value 数据
+     * @param {Object | String} origin 建议原始数据
      * ---
      */
-    _vnode_option (value) {
-      const { label, value } = this._format(item)
+    _vnode_option (origin) {
+      const { label, value } = this._format(origin)
       return {
         props: {
           value
@@ -74,7 +74,7 @@ export default {
         },
         on: {
           click: () => {
-            this.$emit('select', { label, value, origin: item })
+            this.$emit('select', { label, value, origin })
           }
         }
       }
@@ -96,7 +96,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  @import './index.scss';
-</style>
