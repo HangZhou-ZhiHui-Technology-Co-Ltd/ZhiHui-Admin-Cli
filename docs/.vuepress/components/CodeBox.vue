@@ -2,72 +2,70 @@
 export default {
   props: {
     title: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
-      expand: false
+      expand: false,
     };
   },
   methods: {
     render_demo(h) {
-      return h("div", { class: "code-box-demo" }, this.$slots.demo);
+      return h('div', { class: 'code-box-demo' }, this.$slots.demo);
     },
     render_head(h) {
       return h(
-        "a-divider",
+        'a-divider',
         {
           props: {
-            orientation: "left"
+            orientation: 'left',
           },
-          class: "code-box-title"
+          class: 'code-box-title',
         },
         this.$slots.title
       );
     },
     render_desc(h) {
-      return h("div", { class: "code-box-desc" }, this.$slots.desc);
+      return h('div', { class: 'code-box-desc' }, this.$slots.desc);
     },
     render_tips(h) {
       return h(
-        "div",
-        { class: "code-box-tips" },
+        'div',
+        { class: 'code-box-tips' },
         this._tip_config.map(({ on, type, title }) => {
-          return h("a-tooltip", { props: { title } }, [
-            h("a-icon", { on, props: { type }, class: "code-box-tips-icon" })
-          ]);
+          return h('a-tooltip', { props: { title } }, [h('a-icon', { on, props: { type }, class: 'code-box-tips-icon' })]);
         })
       );
     },
     render_code(h) {
       return h(
-        "div",
+        'div',
         {
-          class: "code-box-code",
+          class: 'code-box-code',
           style: {
-            display: this.expand ? "block" : "none"
-          }
+            display: this.expand ? 'block' : 'none',
+          },
         },
         this.$slots.code
       );
-    }
+    },
   },
   computed: {
     _tip_config() {
       let { expand } = this;
       return [
         {
-          title: expand ? "收起代码" : "显示代码",
-          type: expand ? "shrink" : "arrows-alt",
+          title: expand ? '收起代码' : '显示代码',
+          type: expand ? 'shrink' : 'arrows-alt',
           on: {
             click: () => {
               this.expand = !expand;
-            }
-          }
-        }
+            },
+          },
+        },
       ];
-    }
+    },
   },
   render(h) {
     return (
@@ -79,7 +77,7 @@ export default {
         {this.render_code(h)}
       </a-card>
     );
-  }
+  },
 };
 </script>
 
@@ -117,10 +115,10 @@ export default {
   color: #1d2a35;
   word-break: break-word;
 }
-.code-box-code pre[class*="language-"] {
+.code-box-code pre[class*='language-'] {
   margin: 0;
 }
-.code-box-code div[class*="language-"] {
+.code-box-code div[class*='language-'] {
   border-radius: 0;
 }
 </style>
