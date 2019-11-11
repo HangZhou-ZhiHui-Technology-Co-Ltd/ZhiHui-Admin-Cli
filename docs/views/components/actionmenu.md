@@ -14,9 +14,14 @@ title: 动作菜单 actionmenu
 
 <ClientOnly>
 <template>
-<code-box title="基本用法">
+<code-box>
 <template slot="demo">
-<action-menu :config="config" />
+  <action-menu :config="config" />
+</template>
+<template slot="title">
+
+## 基本使用
+
 </template>
 <template slot="desc">
 
@@ -47,11 +52,54 @@ export default {
 </template>
 </code-box>
 &nbsp;
-<code-box title="适应表格内空间的菜单">
+<code-box>
+<template slot="demo">
+  <action-menu :config="config" :compact="true" />
+</template>
+<template slot="title">
+
+## 紧凑型
+
+</template>
+<template slot="desc">
+
+空间不足时的解决方案
+
+</template>
+<template slot="code">
+
+``` html
+<template slot="demo">
+  <action-menu :config="config" :compact="true" />
+</template>
+```
+``` js
+export default {
+  data () {
+    config: [
+      { label: '搜索', icon: 'search', data: { action: 'search' } },
+      { label: '重置', icon: 'redo', data: { action: 'reset' } },
+      [
+        { icon: 'plus', label: '新增', data: { action: 'create' } },
+        { icon: 'edit', label: '编辑', data: { action: 'update' } }
+      ]
+    ]
+  }
+}
+```
+</template>
+</code-box>
+&nbsp;
+<code-box>
 <template slot="demo">
   <a-table :columns="columns" :dataSource="data" :pagination="false">
     <a slot="name" slot-scope="text" href="javascript:;">{{text}}</a>
   </a-table>
+</template>
+<template slot="title">
+
+## 适应表格内空间的菜单
+
 </template>
 <template slot="desc">
 
@@ -129,6 +177,46 @@ export default {
 ```
 </template>
 </code-box>
+&nbsp;
+<code-box>
+<template slot="demo">
+  <action-menu :config="tableConfig" type="link" />
+  <action-menu :config="tableConfig" :divider="false" type="link" style="width:50px" />
+</template>
+<template slot="title">
+
+## 分割线
+
+</template>
+<template slot="desc">
+
+可以控制是否显示分割线
+
+</template>
+<template slot="code">
+
+``` html
+<template slot="demo">
+  <action-menu :config="tableConfig" type="link" />
+  <action-menu :config="tableConfig" :divider="false" type="link" />
+</template>
+```
+``` js
+export default {
+  data () {
+    tableConfig: [
+        { label: '详情', data: { action: 'info' } },
+        { label: '删除', data: { action: 'delete' } },
+        [
+          { icon: 'plus', label: '新增', data: { action: 'create' } },
+          { icon: 'edit', label: '编辑', data: { action: 'update' } }
+        ]
+      ],
+  }
+}
+```
+</template>
+</code-box>
 
 </template>
 </ClientOnly>
@@ -191,7 +279,7 @@ export default {
           dataIndex: 'address',
         },
         {
-          width: 180,
+          width: 178,
           title: '操作',
           customRender: (text, data) => {
             return (
