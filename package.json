@@ -9,6 +9,7 @@
     "admin:lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "animate.css": "^3.7.2",
     "ant-design-vue": "^1.4.4",
     "core-js": "^3.3.2",
     "lodash": "^4.17.15",
