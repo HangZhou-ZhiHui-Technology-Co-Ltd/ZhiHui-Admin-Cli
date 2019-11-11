@@ -25,7 +25,7 @@ title: 动作菜单 actionmenu
 </template>
 <template slot="desc">
 
-基本的用法，将数个功能转换为按钮块
+基本的用法，将数个功能转换为按钮块，通过 `config` 配置按钮块各项属性
 
 </template>
 <template slot="code">
@@ -63,7 +63,7 @@ export default {
 </template>
 <template slot="desc">
 
-空间不足时的解决方案
+空间不足时的解决方案，使用`compact`设置紧凑型
 
 </template>
 <template slot="code">
@@ -190,7 +190,7 @@ export default {
 </template>
 <template slot="desc">
 
-可以控制是否显示分割线
+可以通过 `divider` 控制是否显示分割线
 
 </template>
 <template slot="code">
@@ -198,7 +198,9 @@ export default {
 ``` html
 <template slot="demo">
   <action-menu :config="tableConfig" type="link" />
-  <action-menu :config="tableConfig" :divider="false" type="link" />
+  <a-config-provider :autoInsertSpaceInButton="false">
+    <action-menu :config="tableConfig" :divider="false" type="link" />
+  </a-config-provider>
 </template>
 ```
 ``` js
@@ -217,44 +219,94 @@ export default {
 ```
 </template>
 </code-box>
+&nbsp;
+<code-box>
+<template slot="demo">
+  <action-menu :config="config" @action="_action" />
+</template>
+<template slot="title">
 
+## 事件
+
+</template>
+<template slot="desc">
+
+捕获组件传来的 `action` 事件
+
+</template>
+<template slot="code">
+
+``` html
+<template slot="demo">
+  <action-menu :config="config" @action="_action" />
+</template>
+```
+``` js
+export default {
+  data () {
+    config: [
+        { label: '搜索', icon: 'search', data: { action: 'search', data: 'This is a message of search' } },
+        { label: '重置', icon: 'redo', data: { action: 'reset', data: 'This is a message of reset' } },
+        [
+          { icon: 'plus', label: '新增', data: { action: 'create', data: 'This is a message of create' } },
+          { icon: 'edit', label: '编辑', data: { action: 'update', data: 'This is a message of update' } }
+        ]
+      ]
+  },
+  methods: {
+    /**
+     * ---
+     * @param {String} action 动作
+     * @param {Object} data 数据
+     * ---
+     */
+    _action({ action, data }) {
+      console.log('action:'action)
+      console.log('data:'data)
+    }
+  }
+}
+```
+</template>
+</code-box>
+&nbsp;
 </template>
 </ClientOnly>
 
 ### API
-#### ActionMenu
+#### props
 
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
-config | 动作菜单的配置数组 | array |
-compact | 是否为紧凑型，默认为 false | boolean | false
-divider | 是否含有分割线，默认为 true | boolean | true
-type | 设置按钮的类型，默认为 default | string | default
+[config](#基本使用) | 动作菜单的配置数组 | array |
+[compact](#紧凑型) | 是否为紧凑型 | boolean | false
+[divider](#分割线) | 是否含有分割线 | boolean | true
+[type](#适应表格内空间的菜单) | 设置按钮的类型 | string | default
 
-#### config配置项示例
-
-参数 | 说明 | 类型 
---|--|--
-label | 按钮名称 | string
-icon | 图标 | string
-data | 数据，可以填入按钮对应的动作类型和要传递的数据 | object
-
-#### ActionMenu事件
+#### 事件
 
 事件名称 | 说明 | 回调参数 
 --|--|--
-action | 点击按钮后回调事件 | function({action, data})
+action | 点击按钮后回调事件 | function({ action, data })
+
+#### config配置项示例
+
+参数 | 说明 | 类型 | 默认值
+--|--|--|--
+label | 按钮名称 | string | -
+Buttonprops | 按钮 props | [Buttonprops](https://www.antdv.com/components/button) | -
+data | 数据，可以填入按钮对应的动作类型和要传递的数据 | object | -
 
 <script>
 export default {
   data () {
     return {
       config: [
-        { label: '搜索', icon: 'search', data: { action: 'search' } },
-        { label: '重置', icon: 'redo', data: { action: 'reset' } },
+        { label: '搜索', icon: 'search', data: { action: 'search', data: 'This is a message of search' } },
+        { label: '重置', icon: 'redo', data: { action: 'reset', data: 'This is a message of reset' } },
         [
-          { icon: 'plus', label: '新增', data: { action: 'create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update' } }
+          { icon: 'plus', label: '新增', data: { action: 'create', data: 'This is a message of create' } },
+          { icon: 'edit', label: '编辑', data: { action: 'update', data: 'This is a message of update' } }
         ]
       ],
       tableConfig: [
@@ -309,6 +361,17 @@ export default {
         },
       ]
     }
+  },
+  methods: {
+    _action({ action, data }) {
+      console.log('action:', action)
+      console.log('data:', data)
+    }
   }
 }
 </script>
+<style>
+  .bmr{
+    margin-right: 8px!important;
+  }
+</style>
