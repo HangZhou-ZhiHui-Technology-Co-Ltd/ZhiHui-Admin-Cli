@@ -32,7 +32,6 @@
 
 | 库名称     | Github                                                            | 版本    |
 | ---------- | ----------------------------------------------------------------- | ------- |
-| CSS 动画库 | [Animate.css](https://github.com/daneden/animate.css)             | 3.7.2   |
 | UI 组件库  | [Ant Design of Vue](https://www.antdv.com/docs/vue/introduce-cn/) | 1.4.4   |
 | JS 增强库  | [Lodash](https://www.html.cn/doc/lodash/)                         | 4.17.15 |
 | 视图层框架 | [Vue.js](https://cn.vuejs.org/)                                   | 2.6.10  |
