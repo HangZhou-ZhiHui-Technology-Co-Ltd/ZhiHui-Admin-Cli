@@ -41,16 +41,19 @@ export default {
 			)
 		},
 		render_code(h) {
-			return h(
-				'div',
-				{
-					class: 'code-box-code',
-					style: {
-						display: this.expand ? 'block' : 'none'
-					}
-				},
-				this.$slots.code
-			)
+			const { expand, $slots } = this
+			return h('transition', { props: { name: 'fade' } }, [
+				h(
+					'div',
+					{
+						class: 'code-box-code',
+						style: {
+							display: expand ? 'block' : 'none'
+						}
+					},
+					$slots.code
+				)
+			])
 		}
 	},
 	computed: {
@@ -122,5 +125,13 @@ export default {
 }
 .code-box-code div[class*='language-'] {
 	border-radius: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+	transition: all 1s linear;
+}
+
+.fade-enter {
+	opacity: 0;
 }
 </style>
