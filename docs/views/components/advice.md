@@ -1,42 +1,56 @@
-<ClientOnly>
 <template>
 <code-box>
 <template slot="demo">
-
+  <zh-advice :local="local" />
 </template>
 <template slot="title">
 
-## 离线建议
+## 基本使用
 
 </template>
 <template slot="desc">
 
-当建议项已知时，可以通过 `advice` 设置离线建议直接进行展示
+基本使用。
 
 </template>
 <template slot="code">
 
 ```html
-<template slot="demo">
-  <action-menu :config="config" />
+<template>
+  <zh-advice :local="local" />
 </template>
 ```
 
 ```js
+<script>
 export default {
   data () {
-    config: [
-      { label: '搜索', icon: 'search', data: { action: 'search' } },
-      { label: '重置', icon: 'redo', data: { action: 'reset' } },
-      [
-        { icon: 'plus', label: '新增', data: { action: 'create' }
+    return {
+      local: [
+        'Vue',
+        'Angular',
+        'React'
       ]
-    ]
+    }
   }
 }
+</script>
 ```
 
 </template>
 </code-box>
 </template>
-</ClientOnly>
+
+<script>
+export default {
+  data () {
+    return {
+      local: [
+        'Vue',
+        'Angular',
+        'React'
+      ]
+    }
+  }
+}
+</script>
