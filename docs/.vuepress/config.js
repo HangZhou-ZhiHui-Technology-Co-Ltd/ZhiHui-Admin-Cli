@@ -67,6 +67,10 @@ module.exports = {
           {
             title: '建议',
             path: '../views/components/advice'
+          },
+          {
+            title: '动作菜单',
+            path: '../views/components/actionmenu'
           }
         ]
       }
