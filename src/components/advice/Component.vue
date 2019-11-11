@@ -51,7 +51,7 @@ export default {
 		/**
 		 * 配置 - 选择器
 		 */
-		_vnode_select() {
+		_vnode_selectt() {
 			return {
 				props: Object.assign({}, this.$props)
 			}
