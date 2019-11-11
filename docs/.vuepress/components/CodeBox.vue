@@ -1,59 +1,70 @@
 <script>
 export default {
-	props: {
-		title: {
-			type: String
-		}
-	},
 	data() {
 		return {
+		/**
+		 * 代码是否处于展开状态
+		 */
 			expand: false
 		}
 	},
 	methods: {
-		render_demo(h) {
-			return h('div', { class: 'code-box-demo' }, this.$slots.demo)
-		},
-		render_head(h) {
-			return h(
-				'a-divider',
-				{
-					props: {
-						orientation: 'left'
-					},
-					class: 'code-box-title'
-				},
-				this.$slots.title
+		/**
+		 * 渲染 - 示例
+		 */
+		render_demo() {
+			return (
+				<div class="code-box-demo">
+					{ this.$slots.demo }
+				</div>
 			)
 		},
-		render_desc(h) {
-			return h('div', { class: 'code-box-desc' }, this.$slots.desc)
-		},
-		render_tips(h) {
-			return h(
-				'div',
-				{ class: 'code-box-tips' },
-				this._tip_config.map(({ on, type, title }) => {
-					return h('a-tooltip', { props: { title } }, [
-						h('a-icon', { on, props: { type }, class: 'code-box-tips-icon' })
-					])
-				})
+		/**
+		 * 渲染 - 标题
+		 */
+		render_head() {
+			return (
+				<a-divider orientation="left" class="code-box-title">
+					{ this.$slots.title }
+				</a-divider>
 			)
 		},
-		render_code(h) {
-			const { expand, $slots } = this
-			return h('transition', { props: { name: 'fade' } }, [
-				h(
-					'div',
+		/**
+		 * 渲染 - 描述
+		 */
+		render_desc() {
+			return <div class='code-box-desc'>{this.$slots.desc}</div>
+		},
+		/**
+		 * 渲染 - 功能
+		 */
+		render_tips() {
+			return (
+				<div class='code-box-tips'>
 					{
-						class: 'code-box-code',
-						style: {
-							display: expand ? 'block' : 'none'
-						}
-					},
-					$slots.code
-				)
-			])
+						this._tip_config.map(({ icon, tooltip }) => {
+							return (
+								<a-tooltip {...tooltip}>
+									<a-icon {...icon} />
+								</a-tooltip>
+							)
+						})
+					}
+				</div>
+			)
+		},
+		/**
+		 * 渲染 - 代码
+		 */
+		render_code() {
+			const { expand, $slots } = this
+			return (
+				<el-collapse-transition>
+					<div v-show={expand} class='code-box-code'>
+						{$slots.code}
+					</div>
+				</el-collapse-transition>
+			)
 		}
 	},
 	computed: {
@@ -61,25 +72,34 @@ export default {
 			let { expand } = this
 			return [
 				{
-					title: expand ? '收起代码' : '显示代码',
-					type: expand ? 'shrink' : 'arrows-alt',
-					on: {
-						click: () => {
-							this.expand = !expand
+					tooltip: {
+						props: {
+							title: expand ? '收起代码' : '显示代码'
+						}
+					},
+					icon: {
+						props: {
+							type: expand ? 'shrink' : 'arrows-alt'
+						},
+						class: 'code-box-tips-icon',
+						on: {
+							click: () => {
+								this.expand = !expand
+							}
 						}
 					}
 				}
 			]
 		}
 	},
-	render(h) {
+	render() {
 		return (
 			<a-card bodyStyle={{ padding: 0 }} class='code-box'>
-				{this.render_demo(h)}
-				{this.render_head(h)}
-				{this.render_desc(h)}
-				{this.render_tips(h)}
-				{this.render_code(h)}
+				{this.render_demo()}
+				{this.render_head()}
+				{this.render_desc()}
+				{this.render_tips()}
+				{this.render_code()}
 			</a-card>
 		)
 	}
@@ -125,13 +145,5 @@ export default {
 }
 .code-box-code div[class*='language-'] {
 	border-radius: 0;
-}
-.fade-enter-active,
-.fade-leave-active {
-	transition: all 1s linear;
-}
-
-.fade-enter {
-	opacity: 0;
 }
 </style>
