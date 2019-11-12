@@ -6,14 +6,6 @@
  */
 module.exports = {
   /**
-   * 缩进方式
-   */
-  useTabs: false,
-  /**
-   * 缩进大小
-   */
-  tabWidth: 2,
-  /**
    * 行尾添加分号
    */
   semi: false,

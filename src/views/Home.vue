@@ -1,12 +1,15 @@
 <template>
-  <div class="home">
-    <a-date-picker></a-date-picker>
-  </div>
+	<div class="home">
+		<asd></asd>
+	</div>
 </template>
 
 <script>
-
+import asd from '../components/advice/demo/index'
 export default {
-  name: 'home'
+	name: 'home',
+	components: {
+		asd
+	}
 }
 </script>
