@@ -46,7 +46,8 @@
 |   2    | ActionMenu 组件文档字体修改 |  进行中  | n 小时 |
 |   3    | ActionMenu 组件暴露问题整理 |  进行中  | n 小时 |
 |   4    | ActionMenu 组件文档锚点跳转 |  进行中  | n 小时 |
-|   5    | teambition中bug处理 |  进行中  | n 小时 |
+|   5    | eslintrc.js注释补全 |  进行中  | n 小时 |
+|   6    | teambition中bug处理 |  进行中  | n 小时 |
 
 #### 陈齐康
 
