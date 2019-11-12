@@ -1,5 +1,5 @@
 <script>
-import { isArray } from 'lodash'
+import { isArray, isString, isObject } from 'lodash'
 export default {
   name: 'action-menu',
   props: {
@@ -34,6 +34,34 @@ export default {
     }
   },
   methods: {
+    /**
+     * 判空
+     * ---
+     * @param {String | Array} data 校验内容
+     * ---
+     * _is_empty([])        ->  true
+     * _is_empty({})        ->  true
+     * _is_empty(null)      ->  true
+     * _is_empty(undefined) ->  true
+     * ---
+     */
+    _is_empty (data) {
+      return (data === null || data === undefined || (isObject(data) && Object.values(data).length === 0)) ? true : /^[\s\xa0]*$/.test(data)
+    },
+    /**
+     * 获取对象
+     * -
+     * @param {Object} data 数据
+     * @param {Object} def  默认值
+     * -
+     */
+    _get (data, def) {
+      if (this._is_empty(data)) {
+        return def || '------'
+      } else {
+        return data
+      }
+    },
     /**
      * 渲染项 - 图标
      * ---
@@ -122,7 +150,7 @@ export default {
         props: Object.assign({ type: this._btn_type(index) }, config),
         on: {
           click: () => {
-            if (this._lodash.isString(config.label)) {
+            if (isString(config.label)) {
               this.$emit('action', this._get(config.data, {}))
             }
           }
