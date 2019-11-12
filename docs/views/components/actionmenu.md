@@ -92,6 +92,98 @@ export default {
 &nbsp;
 <code-box>
 <template slot="demo">
+  <action-menu :config="tableConfig" type="link" />
+  <action-menu :config="tableConfig" :divider="false" type="link" style="width:50px" />
+</template>
+<template slot="title">
+
+## 分割线
+
+</template>
+<template slot="desc">
+
+可以通过 `divider` 控制是否显示分割线
+
+</template>
+<template slot="code">
+
+``` html
+<template slot="demo">
+  <action-menu :config="tableConfig" type="link" />
+  <a-config-provider :autoInsertSpaceInButton="false">
+    <action-menu :config="tableConfig" :divider="false" type="link" />
+  </a-config-provider>
+</template>
+```
+``` js
+export default {
+  data () {
+    tableConfig: [
+        { label: '详情', data: { action: 'info' } },
+        { label: '删除', data: { action: 'delete' } },
+        [
+          { icon: 'plus', label: '新增', data: { action: 'create' } },
+          { icon: 'edit', label: '编辑', data: { action: 'update' } }
+        ]
+      ],
+  }
+}
+```
+</template>
+</code-box>
+&nbsp;
+<code-box>
+<template slot="demo">
+  <action-menu :config="config" @action="_action" />
+</template>
+<template slot="title">
+
+## 组件回调事件
+
+</template>
+<template slot="desc">
+
+捕获组件传来的 `action` 事件
+
+</template>
+<template slot="code">
+
+``` html
+<template slot="demo">
+  <action-menu :config="config" @action="_action" />
+</template>
+```
+``` js
+export default {
+  data () {
+    config: [
+        { label: '搜索', icon: 'search', data: { action: 'search', data: 'This is a message of search' } },
+        { label: '重置', icon: 'redo', data: { action: 'reset', data: 'This is a message of reset' } },
+        [
+          { icon: 'plus', label: '新增', data: { action: 'create', data: 'This is a message of create' } },
+          { icon: 'edit', label: '编辑', data: { action: 'update', data: 'This is a message of update' } }
+        ]
+      ]
+  },
+  methods: {
+    /**
+     * ---
+     * @param {String} action 动作
+     * @param {Object} data 数据
+     * ---
+     */
+    _action({ data, action }) {
+      console.log('data:', data)
+      console.log('action:', action)
+    }
+  }
+}
+```
+</template>
+</code-box>
+&nbsp;
+<code-box>
+<template slot="demo">
   <a-table :columns="columns" :dataSource="data" :pagination="false">
     <a slot="name" slot-scope="text" href="javascript:;">{{text}}</a>
   </a-table>
@@ -177,125 +269,37 @@ export default {
 ```
 </template>
 </code-box>
-&nbsp;
-<code-box>
-<template slot="demo">
-  <action-menu :config="tableConfig" type="link" />
-  <action-menu :config="tableConfig" :divider="false" type="link" style="width:50px" />
-</template>
-<template slot="title">
-
-## 分割线
-
-</template>
-<template slot="desc">
-
-可以通过 `divider` 控制是否显示分割线
-
-</template>
-<template slot="code">
-
-``` html
-<template slot="demo">
-  <action-menu :config="tableConfig" type="link" />
-  <a-config-provider :autoInsertSpaceInButton="false">
-    <action-menu :config="tableConfig" :divider="false" type="link" />
-  </a-config-provider>
-</template>
-```
-``` js
-export default {
-  data () {
-    tableConfig: [
-        { label: '详情', data: { action: 'info' } },
-        { label: '删除', data: { action: 'delete' } },
-        [
-          { icon: 'plus', label: '新增', data: { action: 'create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update' } }
-        ]
-      ],
-  }
-}
-```
-</template>
-</code-box>
-&nbsp;
-<code-box>
-<template slot="demo">
-  <action-menu :config="config" @action="_action" />
-</template>
-<template slot="title">
-
-## 事件
-
-</template>
-<template slot="desc">
-
-捕获组件传来的 `action` 事件
-
-</template>
-<template slot="code">
-
-``` html
-<template slot="demo">
-  <action-menu :config="config" @action="_action" />
-</template>
-```
-``` js
-export default {
-  data () {
-    config: [
-        { label: '搜索', icon: 'search', data: { action: 'search', data: 'This is a message of search' } },
-        { label: '重置', icon: 'redo', data: { action: 'reset', data: 'This is a message of reset' } },
-        [
-          { icon: 'plus', label: '新增', data: { action: 'create', data: 'This is a message of create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update', data: 'This is a message of update' } }
-        ]
-      ]
-  },
-  methods: {
-    /**
-     * ---
-     * @param {String} action 动作
-     * @param {Object} data 数据
-     * ---
-     */
-    _action({ action, data }) {
-      console.log('action:'action)
-      console.log('data:'data)
-    }
-  }
-}
-```
-</template>
-</code-box>
-&nbsp;
 </template>
 </ClientOnly>
+<api-box>
+<template slot="desc">
 
 ### API
 #### props
 
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
-[config](#基本使用) | 动作菜单的配置数组 | array |
+[config](#基本使用) | 动作菜单的配置数组 | array | ------
 [compact](#紧凑型) | 是否为紧凑型 | boolean | false
 [divider](#分割线) | 是否含有分割线 | boolean | true
 [type](#适应表格内空间的菜单) | 设置按钮的类型 | string | default
 
-#### 事件
+#### events
 
-事件名称 | 说明 | 回调参数 
+名称 | 说明 | 回调参数 
 --|--|--
-action | 点击按钮后回调事件 | function({ action, data })
+[action](#事件) | 点击按钮后回调事件 | function({ action, data })
 
-#### config配置项示例
+#### config 配置项示例
 
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
-label | 按钮名称 | string | -
-Buttonprops | 按钮 props | [Buttonprops](https://www.antdv.com/components/button) | -
-data | 数据，可以填入按钮对应的动作类型和要传递的数据 | object | -
+label | 按钮名称 | string | ------
+buttonProps | 按钮 props | [buttonProps](https://www.antdv.com/components/button) | ------
+data | 可以填入按钮对应的动作类型和要传递的数据 | object | ------
+
+</template>
+</api-box>
 
 <script>
 export default {
@@ -363,9 +367,9 @@ export default {
     }
   },
   methods: {
-    _action({ action, data }) {
-      console.log('action:', action)
+    _action({ data, action }) {
       console.log('data:', data)
+      console.log('action:', action)
     }
   }
 }
