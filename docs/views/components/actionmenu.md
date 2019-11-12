@@ -271,6 +271,7 @@ export default {
 </code-box>
 </template>
 </ClientOnly>
+&nbsp;
 <api-box>
 <template slot="desc">
 
@@ -295,7 +296,7 @@ export default {
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
 label | 按钮名称 | string | ------
-buttonProps | 按钮 props | [buttonProps](https://www.antdv.com/components/button) | ------
+buttonProps | 按钮 props | [buttonProps](https://www.antdv.com/components/button) | [buttonProps](https://www.antdv.com/components/button)
 data | 可以填入按钮对应的动作类型和要传递的数据 | object | ------
 
 </template>
