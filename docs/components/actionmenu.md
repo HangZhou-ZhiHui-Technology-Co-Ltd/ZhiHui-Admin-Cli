@@ -5,11 +5,10 @@ title: 动作菜单 actionmenu
 # ActionMenu 动作菜单
 将数个动作或功能转换为一排菜单。
 
-### 何时使用 
-&nbsp;
+## 何时使用 
 - 需要对某组件进行数个操作时
 - 提供三种不同类型的菜单
-### 代码演示
+## 代码演示
 &nbsp;
 
 <ClientOnly>
@@ -30,20 +29,35 @@ title: 动作菜单 actionmenu
 </template>
 <template slot="code">
 
-``` html
+``` jsx
 <template slot="demo">
-  <action-menu :config="config" />
+  <action-menu :config="demo_one_config" />
 </template>
-```
-``` js
+
 export default {
   data () {
-    config: [
-      { label: '搜索', icon: 'search', data: { action: 'search' } },
-      { label: '重置', icon: 'redo', data: { action: 'reset' } },
+    demo_one_config: [
+      { 
+        label: '搜索',
+        icon: 'search',
+        data: { action: 'search' }
+      },
+      { 
+        label: '重置',
+        icon: 'redo',
+        data: { action: 'reset' }
+      },
       [
-        { icon: 'plus', label: '新增', data: { action: 'create' } },
-        { icon: 'edit', label: '编辑', data: { action: 'update' } }
+        { 
+          icon: 'plus',
+          label: '新增',
+          data: { action: 'create' }
+        },
+        { 
+          icon: 'edit',
+          label: '编辑',
+          data: { action: 'update' } 
+        }
       ]
     ]
   }
@@ -68,20 +82,35 @@ export default {
 </template>
 <template slot="code">
 
-``` html
+``` jsx
 <template slot="demo">
-  <action-menu :config="config" :compact="true" />
+  <action-menu :config="demo_two_config" :compact="true" />
 </template>
-```
-``` js
+
 export default {
   data () {
-    config: [
-      { label: '搜索', icon: 'search', data: { action: 'search' } },
-      { label: '重置', icon: 'redo', data: { action: 'reset' } },
+    demo_two_config: [
+      { 
+        label: '搜索',
+        icon: 'search',
+        data: { action: 'search' }
+      },
+      { 
+        label: '重置',
+        icon: 'redo',
+        data: { action: 'reset' }
+      },
       [
-        { icon: 'plus', label: '新增', data: { action: 'create' } },
-        { icon: 'edit', label: '编辑', data: { action: 'update' } }
+        { 
+          icon: 'plus',
+          label: '新增',
+          data: { action: 'create' }
+        },
+        { 
+          icon: 'edit',
+          label: '编辑',
+          data: { action: 'update' } 
+        }
       ]
     ]
   }
@@ -109,21 +138,36 @@ export default {
 </template>
 <template slot="code">
 
-``` html
+``` jsx
 <template slot="demo">
-  <action-menu :config="tableConfig" type="link" />
+  <action-menu :config="demo_three_config" type="link" />
 </template>
-```
-``` js
+
 export default {
   data () {
-    tableConfig: [
-        { label: '详情', data: { action: 'info' } },
-        { label: '删除', data: { action: 'delete' } },
-        [
-          { icon: 'plus', label: '新增', data: { action: 'create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update' } }
-        ]
+    demo_three_config: [
+        { 
+        label: '搜索',
+        icon: 'search',
+        data: { action: 'search' }
+      },
+      { 
+        label: '重置',
+        icon: 'redo',
+        data: { action: 'reset' }
+      },
+      [
+        { 
+          icon: 'plus',
+          label: '新增',
+          data: { action: 'create' }
+        },
+        { 
+          icon: 'edit',
+          label: '编辑',
+          data: { action: 'update' } 
+        }
+      ]
       ],
   }
 }
@@ -133,7 +177,7 @@ export default {
 &nbsp;
 <code-box>
 <template slot="demo">
-  <action-menu :config="demo_four_config" @action="_action" />
+  <action-menu :config="demo_four_config" @action="_action_four_config" />
 </template>
 <template slot="title">
 
@@ -147,21 +191,36 @@ export default {
 </template>
 <template slot="code">
 
-``` html
+``` jsx
 <template slot="demo">
-  <action-menu :config="demo_five_config" @action="_action_five_config" />
+  <action-menu :config="demo_four_config" @action="_action_four_config" />
 </template>
-```
-``` js
+
 export default {
   data () {
-    config: [
-        { label: '搜索', icon: 'search', data: { action: 'search', data: 'This is a message of search' } },
-        { label: '重置', icon: 'redo', data: { action: 'reset', data: 'This is a message of reset' } },
-        [
-          { icon: 'plus', label: '新增', data: { action: 'create', data: 'This is a message of create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update', data: 'This is a message of update' } }
-        ]
+    demo_four_config: [
+        { 
+        label: '搜索',
+        icon: 'search',
+        data: { action: 'search' }
+      },
+      { 
+        label: '重置',
+        icon: 'redo',
+        data: { action: 'reset' }
+      },
+      [
+        { 
+          icon: 'plus',
+          label: '新增',
+          data: { action: 'create' }
+        },
+        { 
+          icon: 'edit',
+          label: '编辑',
+          data: { action: 'update' } 
+        }
+      ]
       ]
   },
   methods: {
@@ -171,7 +230,7 @@ export default {
      * @param {Object} data 数据
      * ---
      */
-    _action({ data, action }) {
+    _action_four_config({ data, action }) {
       console.log('data:', data)
       console.log('action:', action)
     }
@@ -183,7 +242,7 @@ export default {
 &nbsp;
 <code-box>
 <template slot="demo">
-  <a-table :columns="columns" :dataSource="data" :pagination="false" />
+  <a-table :columns="columns_five_config" :dataSource="data_five_config" :pagination="false" />
 </template>
 <template slot="title">
 
@@ -198,35 +257,68 @@ export default {
 
 <template slot="code">
 
-``` html
+``` jsx
 <template slot="demo">
-  <a-table :columns="columns" :dataSource="data" :pagination="false">
+  <a-table :columns="columns_five_config" :dataSource="data_five_config" :pagination="false">
     <a slot="name" slot-scope="text" href="javascript:;">{{text}}</a>
   </a-table>
 </template>
-```
-``` js
+
 export default {
   data () {
     return {
-      tableConfig: [
-        { label: '详情', data: { action: 'info' } },
-        { label: '删除', data: { action: 'delete' } },
+      demo_five_config: [
+        {
+          label: '编辑',
+          data: {
+            action: 'update',
+            data: 'This is a message of update'
+          }
+        },
+        {
+          label: '删除',
+          data: {
+            action: 'remove',
+            data: 'This is a message of remove'
+          }
+        },
         [
-          { icon: 'plus', label: '新增', data: { action: 'create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update' } }
+          {
+            label: '新增',
+            buttonProps: {
+              icon: 'plus'
+            },
+            data: {
+              action: 'create',
+              data: 'This is a message of create'
+            }
+          },
+          {
+            label: '编辑',
+            buttonProps: {
+              icon: 'edit'
+            },
+            data: {
+              action: 'modify',
+              data: 'This is a message of modify'
+            }
+          }
+        ]
         ]
       ],
-      columns: [
+      columns_five_config: [
         {
+          width: 22%,
           title: '姓名',
           dataIndex: 'name',
         },
         {
+          width: 20%,
           title: '年龄',
           dataIndex: 'age',
         },
         {
+          width: 23%,
           title: '活动范围',
           dataIndex: 'address',
         },
@@ -234,12 +326,12 @@ export default {
           title: '操作',
           customRender: (text, data) => {
             return (
-              <action-menu type="link" config={this.tableConfig} />
+              <action-menu type="link" config={this.demo_five_config} />
             )
           }
         }
       ],
-      data: [
+      data_five_config: [
         {
           key: '1',
           name: '莲',
@@ -267,29 +359,29 @@ export default {
 </code-box>
 <api-box>
 <template slot="desc">
+&nbsp;
 
-### API
-#### props
+## props
 
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
 [config](#基本使用) | 动作菜单的配置数组 | array | ------
 [compact](#紧凑型) | 是否为紧凑型 | boolean | false
 [divider](#分割线) | 是否含有分割线 | boolean | true
-[type](#适应表格内空间的菜单) | 设置按钮的类型 | string | default
+[type](#适应表格内空间的菜单) | 设置菜单内按钮的类型，会被 `buttonProps` 中的 'type' 覆盖 | string | default
 
-#### events
+## events
 
 名称 | 说明 | 回调参数 
 --|--|--
 [action](#事件) | 点击按钮后回调事件 | function({ data,action })
 
-#### config 配置项示例
+## config
 
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
 label | 按钮名称 | string | ------
-buttonProps | 按钮 props | [buttonProps](https://www.antdv.com/components/button) | [buttonProps](https://www.antdv.com/components/button)
+buttonProps | 按钮 props, 其中 type 属性会覆盖组件的 `type` | [buttonProps](https://www.antdv.com/components/button) | [buttonProps](https://www.antdv.com/components/button)
 data | 可以填入按钮对应的动作类型和要传递的数据 | object | ------
 
 </template>
@@ -517,11 +609,12 @@ export default {
           title: '姓名',
           dataIndex: 'name',
         },
-        {
+        { 
           title: '年龄',
           dataIndex: 'age',
         },
         {
+          width: 180,
           title: '操作',
           customRender: (text, data) => {
             return (

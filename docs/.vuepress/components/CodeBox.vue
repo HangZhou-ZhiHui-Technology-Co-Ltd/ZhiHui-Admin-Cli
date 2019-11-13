@@ -146,4 +146,7 @@ export default {
 .code-box-code div[class*='language-'] {
 	border-radius: 0;
 }
+.code-box-demo table td {
+	width: 20%
+}
 </style>

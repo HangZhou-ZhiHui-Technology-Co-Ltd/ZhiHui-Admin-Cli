@@ -25,7 +25,14 @@ export default {
   line-height: 1.5;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
+.api-box-desc table td:nth-child(1) {
+	width: 20%
+}
 .api-box-desc table td:nth-child(3) {
+	width: 22%;
 	color: #c41d7f
+}
+.api-box-desc table td:nth-child(4) {
+	width: 16%
 }
 </style>
