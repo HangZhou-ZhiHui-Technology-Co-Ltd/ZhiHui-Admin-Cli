@@ -289,7 +289,7 @@ export default {
 
 名称 | 说明 | 回调参数 
 --|--|--
-[action](#事件) | 点击按钮后回调事件 | function({ action, data })
+[action](#事件) | 点击按钮后回调事件 | function({ data,action })
 
 #### config 配置项示例
 

@@ -48,6 +48,12 @@ module.exports = {
         link: '/views/components/'
       },
       {
+        text: '规范',
+        items: [
+          { text: '文档规范', link: '/views/standard/docstandard' }
+        ]
+      },
+      {
         text: 'Github',
         link: 'https://github.com/HangZhou-ZhiHui-Technology-Co-Ltd/ZhiHui-Admin-Cli'
       }
