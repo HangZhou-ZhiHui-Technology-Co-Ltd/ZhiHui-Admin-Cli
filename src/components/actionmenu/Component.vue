@@ -1,10 +1,12 @@
 <script>
-import { isArray, isString, isObject } from 'lodash'
+import { get, isArray } from 'lodash'
+import common_mixin from '../../mixins/common'
 export default {
   name: 'action-menu',
   props: {
     /**
      * 配置
+
      */
     config: {
       type: Array,
@@ -33,35 +35,10 @@ export default {
       default: 'default'
     }
   },
+  mixins: [
+    common_mixin
+  ],
   methods: {
-    /**
-     * 判空
-     * ---
-     * @param {String | Array} data 校验内容
-     * ---
-     * _is_empty([])        ->  true
-     * _is_empty({})        ->  true
-     * _is_empty(null)      ->  true
-     * _is_empty(undefined) ->  true
-     * ---
-     */
-    _is_empty (data) {
-      return (data === null || data === undefined || (isObject(data) && Object.values(data).length === 0)) ? true : /^[\s\xa0]*$/.test(data)
-    },
-    /**
-     * 获取对象
-     * -
-     * @param {Object} data 数据
-     * @param {Object} def  默认值
-     * -
-     */
-    _get (data, def) {
-      if (this._is_empty(data)) {
-        return def || '------'
-      } else {
-        return data
-      }
-    },
     /**
      * 渲染项 - 图标
      * ---
@@ -69,12 +46,12 @@ export default {
      * ---
      */
     render_icon (icon) {
-      return this._is_empty(icon) ? null : <a-icon type={icon} />
+      return this.isEmpty(icon) ? null : <a-icon type={icon} />
     },
     /**
      * 渲染项 - 分割线
      * ---
-     * @pamra {Integer} index 顺序索引
+     * @pamra {Number} index 顺序索引
      * ---
      */
     render_divider (index) {
@@ -87,16 +64,18 @@ export default {
     /**
      * 渲染项 - 功能
      * ---
-     * @pamra {Object}   props  参数
-     * @pamra {Integer}  index  顺序索引
+     * @pamra {Object}   config  配置项
+     * @pamra {Integer}  index   顺序索引
      * ---
      */
-    render_item (props, index) {
+    render_item (config, index) {
       return (
-        <a-button {...this._btn_vnode(props, index) }>
-          {props.label}
+        <span>
+          <a-button {...this._btn_vnode(config) }>
+            {config.label}
+          </a-button>
           { this.render_divider(index) }
-        </a-button>
+        </span>
       )
     },
     /**
@@ -115,11 +94,11 @@ export default {
           <a-menu slot="overlay">
             {
               config.map(option => {
-                return (
-                  <a-menu-item>
-                    {this.render_item(Object.assign(option, { type: 'link' }))}
-                  </a-menu-item>
-                )
+                if (!option.buttonProps) {
+                  option.buttonProps = {}
+                }
+                option.buttonProps.type = 'link'
+                return <a-menu-item>{ this.render_item(option) }</a-menu-item>
               })
             }
           </a-menu>
@@ -128,33 +107,50 @@ export default {
     },
     /**
      * 按钮 - VNODE
-     * ---
-     * @pamra {Integer}  index  顺序索引
-     * ---
-     * @focus: 1. 主按钮在同一个操作区域最多出现一次
      */
-    _btn_type (index) {
-      if (this.type === 'link') {
-        return 'link'
-      } else {
-        // @focus -> 1
-        return !this._compat && index === 0 ? 'primary' : 'default'
+    _btn_vnode ({ data = {}, buttonProps = {} }) {
+      const type = this._btn_type(buttonProps)
+      const style = this._btn_style(type)
+      return {
+        style,
+        props: Object.assign({ type }, buttonProps),
+        on: {
+          click: () => {
+            this.$emit('action', data)
+          }
+        }
       }
     },
     /**
-     * 按钮 - VNODE
+     * 按钮 - 类型
+     * ---
+     * @param {Object} buttonProps 按钮 PROPS
+     * ---
      */
-    _btn_vnode (config, index) {
-      return {
-        class: this.type === 'link' || this._compat ? null : 'bmr',
-        props: Object.assign({ type: this._btn_type(index) }, config),
-        on: {
-          click: () => {
-            if (isString(config.label)) {
-              this.$emit('action', this._get(config.data, {}))
-            }
-          }
+    _btn_type (buttonProps) {
+      const type = get(buttonProps, 'type')
+      return this.isEmpty(type) ? this.type : type
+    },
+    /**
+     * 按钮 - 样式
+     * ---
+     * @param {String} type 按钮类型
+     * ---
+     */
+    _btn_style (type) {
+      let marginRight = '8px'
+      if (this._compat) {
+        marginRight = 0
+      }
+      if (this.divider) {
+        if (type === 'link') {
+          marginRight = '0px'
         }
+      } else {
+        marginRight = '17px'
+      }
+      return {
+        marginRight
       }
     }
   },
@@ -187,7 +183,6 @@ export default {
 
 <style>
   .action-link-menu .ant-btn{
-    margin: 0!important;
     padding: 0!important;
     height: 20px!important;
   }
