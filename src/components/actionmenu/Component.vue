@@ -1,5 +1,6 @@
 <script>
-import { isArray, isString, isObject } from 'lodash'
+import { isArray, isString } from 'lodash'
+import { _get, _is_empty } from '../_util/common'
 export default {
   name: 'action-menu',
   props: {
@@ -35,41 +36,13 @@ export default {
   },
   methods: {
     /**
-     * 判空
-     * ---
-     * @param {String | Array} data 校验内容
-     * ---
-     * _is_empty([])        ->  true
-     * _is_empty({})        ->  true
-     * _is_empty(null)      ->  true
-     * _is_empty(undefined) ->  true
-     * ---
-     */
-    _is_empty (data) {
-      return (data === null || data === undefined || (isObject(data) && Object.values(data).length === 0)) ? true : /^[\s\xa0]*$/.test(data)
-    },
-    /**
-     * 获取对象
-     * -
-     * @param {Object} data 数据
-     * @param {Object} def  默认值
-     * -
-     */
-    _get (data, def) {
-      if (this._is_empty(data)) {
-        return def || '------'
-      } else {
-        return data
-      }
-    },
-    /**
      * 渲染项 - 图标
      * ---
      * @pamra {String} icon 图标
      * ---
      */
     render_icon (icon) {
-      return this._is_empty(icon) ? null : <a-icon type={icon} />
+      return _is_empty(icon) ? null : <a-icon type={icon} />
     },
     /**
      * 渲染项 - 分割线
@@ -151,7 +124,7 @@ export default {
         on: {
           click: () => {
             if (isString(config.label)) {
-              this.$emit('action', this._get(config.data, {}))
+              this.$emit('action', _get(config.data, {}))
             }
           }
         }
