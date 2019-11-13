@@ -16,7 +16,7 @@ title: 动作菜单 actionmenu
 <template>
 <code-box>
 <template slot="demo">
-  <action-menu :config="config" />
+  <action-menu :config="demo_one_config" />
 </template>
 <template slot="title">
 
@@ -54,7 +54,7 @@ export default {
 &nbsp;
 <code-box>
 <template slot="demo">
-  <action-menu :config="config" :compact="true" />
+  <action-menu compact :config="demo_two_config" />
 </template>
 <template slot="title">
 
@@ -89,11 +89,13 @@ export default {
 ```
 </template>
 </code-box>
+</template>
+</ClientOnly>
 &nbsp;
 <code-box>
 <template slot="demo">
-  <action-menu :config="tableConfig" type="link" />
-  <action-menu :config="tableConfig" :divider="false" type="link" style="width:50px" />
+  <action-menu :config="demo_three_config" type="link" />
+  <action-menu :config="demo_three_config" :divider="false" type="link" />
 </template>
 <template slot="title">
 
@@ -110,9 +112,6 @@ export default {
 ``` html
 <template slot="demo">
   <action-menu :config="tableConfig" type="link" />
-  <a-config-provider :autoInsertSpaceInButton="false">
-    <action-menu :config="tableConfig" :divider="false" type="link" />
-  </a-config-provider>
 </template>
 ```
 ``` js
@@ -134,7 +133,7 @@ export default {
 &nbsp;
 <code-box>
 <template slot="demo">
-  <action-menu :config="config" @action="_action" />
+  <action-menu :config="demo_four_config" @action="_action" />
 </template>
 <template slot="title">
 
@@ -150,7 +149,7 @@ export default {
 
 ``` html
 <template slot="demo">
-  <action-menu :config="config" @action="_action" />
+  <action-menu :config="demo_four_config" @action="_action" />
 </template>
 ```
 ``` js
@@ -184,9 +183,7 @@ export default {
 &nbsp;
 <code-box>
 <template slot="demo">
-  <a-table :columns="columns" :dataSource="data" :pagination="false">
-    <a slot="name" slot-scope="text" href="javascript:;">{{text}}</a>
-  </a-table>
+  <a-table :columns="columns" :dataSource="data" :pagination="false" />
 </template>
 <template slot="title">
 
@@ -234,7 +231,6 @@ export default {
           dataIndex: 'address',
         },
         {
-          width: 180,
           title: '操作',
           customRender: (text, data) => {
             return (
@@ -269,9 +265,6 @@ export default {
 ```
 </template>
 </code-box>
-</template>
-</ClientOnly>
-&nbsp;
 <api-box>
 <template slot="desc">
 
@@ -306,20 +299,217 @@ data | 可以填入按钮对应的动作类型和要传递的数据 | object | -
 export default {
   data () {
     return {
-      config: [
-        { label: '搜索', icon: 'search', data: { action: 'search', data: 'This is a message of search' } },
-        { label: '重置', icon: 'redo', data: { action: 'reset', data: 'This is a message of reset' } },
+      demo_one_config: [
+        {
+          label: '搜索',
+          buttonProps: {
+            icon: 'search', 
+            type: 'primary'
+          },
+          data: {
+            action: 'search',
+            data: 'This is a message of search'
+          }
+        },
+        {
+          label: '重置',
+          buttonProps: {
+            icon: 'redo', 
+            type: 'danger'
+          },
+          data: {
+            action: 'reload',
+            data: 'This is a message of reload'
+          }
+        },
         [
-          { icon: 'plus', label: '新增', data: { action: 'create', data: 'This is a message of create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update', data: 'This is a message of update' } }
+          {
+            label: '新增',
+            buttonProps: {
+              icon: 'plus'
+            },
+            data: {
+              action: 'create',
+              data: 'This is a message of create'
+            }
+          },
+          {
+            label: '编辑',
+            buttonProps: {
+              icon: 'edit'
+            },
+            data: {
+              action: 'modify',
+              data: 'This is a message of modify'
+            }
+          }
         ]
       ],
-      tableConfig: [
-        { label: '详情', data: { action: 'info' } },
-        { label: '删除', data: { action: 'delete' } },
+      demo_two_config: [
+        {
+          label: '搜索',
+          buttonProps: {
+            icon: 'search', 
+            type: 'primary'
+          },
+          data: {
+            action: 'search',
+            data: 'This is a message of search'
+          }
+        },
+        {
+          label: '重置',
+          buttonProps: {
+            icon: 'redo',
+          },
+          data: {
+            action: 'reload',
+            data: 'This is a message of reload'
+          }
+        },
         [
-          { icon: 'plus', label: '新增', data: { action: 'create' } },
-          { icon: 'edit', label: '编辑', data: { action: 'update' } }
+          {
+            label: '新增',
+            buttonProps: {
+              icon: 'plus'
+            },
+            data: {
+              action: 'create',
+              data: 'This is a message of create'
+            }
+          },
+          {
+            label: '编辑',
+            buttonProps: {
+              icon: 'edit'
+            },
+            data: {
+              action: 'modify',
+              data: 'This is a message of modify'
+            }
+          }
+        ]
+      ],
+      demo_three_config: [
+        {
+          label: '搜索',
+          data: {
+            action: 'search',
+            data: 'This is a message of search'
+          }
+        },
+        {
+          label: '重置',
+          data: {
+            action: 'reload',
+            data: 'This is a message of reload'
+          }
+        },
+        [
+          {
+            label: '新增',
+            buttonProps: {
+              icon: 'plus'
+            },
+            data: {
+              action: 'create',
+              data: 'This is a message of create'
+            }
+          },
+          {
+            label: '编辑',
+            buttonProps: {
+              icon: 'edit'
+            },
+            data: {
+              action: 'modify',
+              data: 'This is a message of modify'
+            }
+          }
+        ]
+      ],
+      demo_four_config: [
+        {
+          label: '搜索',
+          buttonProps: {
+            icon: 'search', 
+            type: 'primary'
+          },
+          data: {
+            action: 'search',
+            data: 'This is a message of search'
+          }
+        },
+        {
+          label: '重置',
+          buttonProps: {
+            icon: 'redo', 
+            type: 'danger'
+          },
+          data: {
+            action: 'reload',
+            data: 'This is a message of reload'
+          }
+        },
+        [
+          {
+            label: '新增',
+            buttonProps: {
+              icon: 'plus'
+            },
+            data: {
+              action: 'create',
+              data: 'This is a message of create'
+            }
+          },
+          {
+            label: '编辑',
+            buttonProps: {
+              icon: 'edit'
+            },
+            data: {
+              action: 'modify',
+              data: 'This is a message of modify'
+            }
+          }
+        ]
+      ],
+      demo_five_config: [
+        {
+          label: '编辑',
+          data: {
+            action: 'update',
+            data: 'This is a message of update'
+          }
+        },
+        {
+          label: '删除',
+          data: {
+            action: 'remove',
+            data: 'This is a message of remove'
+          }
+        },
+        [
+          {
+            label: '新增',
+            buttonProps: {
+              icon: 'plus'
+            },
+            data: {
+              action: 'create',
+              data: 'This is a message of create'
+            }
+          },
+          {
+            label: '编辑',
+            buttonProps: {
+              icon: 'edit'
+            },
+            data: {
+              action: 'modify',
+              data: 'This is a message of modify'
+            }
+          }
         ]
       ],
       columns: [
@@ -332,15 +522,10 @@ export default {
           dataIndex: 'age',
         },
         {
-          title: '活动范围',
-          dataIndex: 'address',
-        },
-        {
-          width: 178,
           title: '操作',
           customRender: (text, data) => {
             return (
-              <action-menu type="link" config={this.tableConfig} />
+              <action-menu type="link" config={this.demo_five_config} />
             )
           }
         }
@@ -349,20 +534,17 @@ export default {
         {
           key: '1',
           name: '莲',
-          age: 17,
-          address: '秀尽学园'
+          age: 17
         },
         {
           key: '2',
           name: '祐介',
-          age: 18,
-          address: '公立洸星高校'
+          age: 18
         },
         {
           key: '3',
           name: '武见',
-          age: 26,
-          address: '四轩茶屋'
+          age: 26
         },
       ]
     }
