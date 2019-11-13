@@ -149,7 +149,7 @@ export default {
 
 ``` html
 <template slot="demo">
-  <action-menu :config="demo_four_config" @action="_action" />
+  <action-menu :config="demo_five_config" @action="_action_five_config" />
 </template>
 ```
 ``` js
@@ -512,7 +512,7 @@ export default {
           }
         ]
       ],
-      columns: [
+      columns_five_config: [
         {
           title: '姓名',
           dataIndex: 'name',
@@ -530,7 +530,7 @@ export default {
           }
         }
       ],
-      data: [
+      data_five_config: [
         {
           key: '1',
           name: '莲',
@@ -550,15 +550,10 @@ export default {
     }
   },
   methods: {
-    _action({ data, action }) {
+    _action_four_config({ data, action }) {
       console.log('data:', data)
       console.log('action:', action)
     }
   }
 }
 </script>
-<style>
-  .bmr{
-    margin-right: 8px!important;
-  }
-</style>

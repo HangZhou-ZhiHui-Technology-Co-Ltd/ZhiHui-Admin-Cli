@@ -4,7 +4,7 @@ heroImage: img/logo.jpeg
 heroText: Peppa Admin
 tagline: 可能是高教园区第二好用的中台脚手架
 actionText: 快速上手 →
-actionLink: /views/components/
+actionLink: /components/
 features:
 - title: 可读 
   details: 注释丰富到对它下跪且感激涕零。繁琐枯燥而又乏味的代码生活从未如此丰富多彩

@@ -45,12 +45,12 @@ module.exports = {
     nav: [
       {
         text: '组件',
-        link: '/views/components/'
+        link: '/components/'
       },
       {
         text: '规范',
         items: [
-          { text: '文档规范', link: '/views/standard/docstandard' }
+          { text: '文档规范', link: '/standard/docstandard' }
         ]
       },
       {
@@ -64,22 +64,39 @@ module.exports = {
      * @doc https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F
      * ---
      */
-    sidebar: [
-      {
-        title: '组件',
-        collapsable: false,
-        path: '/views/components',
-        children: [
-          {
-            title: '建议',
-            path: '../views/components/advice'
-          },
-          {
-            title: '动作菜单',
-            path: '../views/components/actionmenu'
-          }
-        ]
-      }
-    ]
+    sidebar: {
+      '/components/': [
+        {
+          title: '组件',
+          collapsable: false,
+          children: [
+            {
+              title: 'Advice 建议',
+              path: '../components/advice'
+            },
+            {
+              title: 'ActionMenu 动作菜单',
+              path: '../components/actionmenu'
+            },
+            {
+              title: 'IconFont 自定义图标',
+              path: '../components/iconfont'
+            }
+          ]
+        }
+      ],
+      '/standard/': [
+        {
+          title: '规范',
+          collapsable: false,
+          children: [
+            {
+              title: '文档规范',
+              path: '../standard/docstandard'
+            }
+          ]
+        }
+      ]
+    }
   }
 }

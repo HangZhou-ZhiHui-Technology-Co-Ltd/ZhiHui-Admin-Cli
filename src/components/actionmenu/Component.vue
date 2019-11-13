@@ -1,6 +1,6 @@
 <script>
 import { get, isArray } from 'lodash'
-import common_mixin from '../../mixins/common'
+import commonMixin from '../../mixins/common'
 export default {
   name: 'action-menu',
   props: {
@@ -36,7 +36,7 @@ export default {
     }
   },
   mixins: [
-    common_mixin
+    commonMixin
   ],
   methods: {
     /**
