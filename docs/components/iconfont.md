@@ -3,7 +3,7 @@ title: 自定义图标 iconfont
 ---
 
 # IconFont 自定义图标
-在 ant design vue 图标库无法支持业务场景时，可以引入[阿里巴巴矢量图标库](https://www.iconfont.cn/)中的图标
+可以引入[阿里巴巴矢量图标库](https://www.iconfont.cn/)中的图标
 
 ## 使用前的准备
 
@@ -31,7 +31,7 @@ title: 自定义图标 iconfont
 </template>
 <template slot="desc">
 
-使用 `<icon-font/>` 标签声明组件，指定图标对应的 `name` 属性
+指定图标对应的 `name` 属性
 
 </template>
 <template slot="code">
@@ -51,9 +51,10 @@ title: 自定义图标 iconfont
 &nbsp;
 <code-box>
 <template slot="demo">
-  <icon-font name="icon-nanzhi" size="x-large" /><br/>
-  <icon-font name="icon-nanzhi" size="36" /><br/>
-  <icon-font name="icon-nanzhi" size="3em" />
+  <div style="width: 88px;display: flex;flex-direction: column;align-items: center">
+    <icon-font name="icon-nanzhi" :size="demo_two_size" style="margin-bottom: 5px" />
+    <a-input-number :min="16" v-model="demo_two_size" @change="change" />
+  </div>
 </template>
 <template slot="title">
 
@@ -67,12 +68,26 @@ title: 自定义图标 iconfont
 </template>
 <template slot="code">
 
-``` jsx
+``` js
 <template slot="demo">
-  <icon-font name="icon-nanzhi" size="x-large" /><br/>
-  <icon-font name="icon-nanzhi" size="36" /><br/>
-  <icon-font name="icon-nanzhi" size="3em" />
+  <div style="width: 88px;display: flex;flex-direction: column;align-items: center">
+    <icon-font name="icon-nanzhi" :size="demo_two_size" style="margin-bottom: 5px" />
+    <a-input-number :min="12" v-model="demo_two_size" @change="change" />
+  </div>
 </template>
+
+export default {
+  data () {
+    return {
+      demo_two_size: 'x-large'
+    }
+  },
+  methods: {
+    change (value) {
+      this.demo_two_size = value
+    }
+  }
+}
 ```
 </template>
 </code-box>
@@ -84,7 +99,22 @@ title: 自定义图标 iconfont
 
 参数 | 说明 | 类型 | 默认值
 --|--|--|--
-[name](#基本使用) | 图标类名，使用 [阿里巴巴矢量图标库](https://www.iconfont.cn/) 中的类名 | string | ------
-[size](#控制图标大小) | 图标所使用的字号 | string \| number | 16px (ie8为12px)
+[name](#基本使用) | 使用 [阿里巴巴矢量图标库](https://www.iconfont.cn/) 中的类名 | string | ------
+[size](#控制图标大小) | 图标的大小 | string \| number | 16px (ie8为12px)
 </template>
 </api-box>
+
+<script>
+export default {
+  data () {
+    return {
+      demo_two_size: 36
+    }
+  },
+  methods: {
+    change (value) {
+      this.demo_two_size = value
+    }
+  }
+}
+</script>
