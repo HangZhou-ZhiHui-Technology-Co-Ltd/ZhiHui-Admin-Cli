@@ -1,4 +1,6 @@
 import AntD from 'ant-design-vue'
+import '../../src/icons/iconfont.js'
+import '../../src/icons/iconfont.css'
 import 'ant-design-vue/dist/antd.css'
 import 'element-ui/lib/theme-chalk/base.css'
 import IconFont from '../../src/components/iconfont'

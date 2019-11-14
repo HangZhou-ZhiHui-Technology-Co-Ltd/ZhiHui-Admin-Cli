@@ -357,9 +357,9 @@ export default {
 ```
 </template>
 </code-box>
+&nbsp;
 <api-box>
 <template slot="desc">
-&nbsp;
 
 ## props
 
