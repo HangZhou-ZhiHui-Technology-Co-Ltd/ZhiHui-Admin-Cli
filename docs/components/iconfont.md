@@ -52,8 +52,10 @@ title: 自定义图标 iconfont
 <code-box>
 <template slot="demo">
   <div style="width: 88px;display: flex;flex-direction: column;align-items: center">
-    <icon-font name="icon-nanzhi" :size="demo_two_size" style="margin-bottom: 5px" />
-    <a-input-number :min="16" v-model="demo_two_size" @change="change" />
+    <div style="width: 88px;height: 88px;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-bottom: 5px">
+    <icon-font name="icon-nanzhi" :size="demo_two_size" />
+    </div>
+    <a-input-number :min="16" :max="88" v-model="demo_two_size" step="10" @change="change" />
   </div>
 </template>
 <template slot="title">
@@ -71,8 +73,10 @@ title: 自定义图标 iconfont
 ``` js
 <template slot="demo">
   <div style="width: 88px;display: flex;flex-direction: column;align-items: center">
-    <icon-font name="icon-nanzhi" :size="demo_two_size" style="margin-bottom: 5px" />
-    <a-input-number :min="12" v-model="demo_two_size" @change="change" />
+    <div style="width: 88px;height: 88px;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-bottom: 5px">
+    <icon-font name="icon-nanzhi" :size="demo_two_size" />
+    </div>
+    <a-input-number :min="16" :max="88" v-model="demo_two_size" step="10" @change="change" />
   </div>
 </template>
 
